@@ -1,0 +1,10 @@
+.app {
+  background-color: #f3f2ef;
+}
+
+.app__body {
+  padding-top: 3rem;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1140px;
+}
