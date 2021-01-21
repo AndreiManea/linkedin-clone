@@ -1,0 +1,128 @@
+.post {
+  margin-top: 1.5rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.8rem;
+  border: 1px solid #deddda;
+}
+
+/* Containers related */
+.post__top,
+.post__bottom,
+.post__user,
+.post__userInfo,
+.post__likes,
+.post__mediaItems,
+.post__inputForm,
+.post__inputIcons {
+  display: flex;
+}
+
+.post__userInfo,
+.post__bottom,
+.post__container {
+  flex-direction: column;
+}
+
+/* Post Upper Part */
+.post__top {
+  justify-content: space-between;
+  padding: 1.25rem 1rem;
+  padding-bottom: 0;
+}
+
+.post__top > svg {
+  padding: 1rem;
+  border-radius: 2rem;
+  transition: 0.3s;
+}
+
+.post__top > svg:hover {
+  background-color: #deddda;
+  cursor: pointer;
+}
+
+.post__user {
+  align-items: center;
+}
+
+.post__userInfo {
+  margin-left: 0.6rem;
+  text-align: left;
+}
+
+/* Post Bottom Part */
+.post__inputForm {
+  padding: 1rem;
+  align-items: center;
+}
+
+.post__inputForm > form {
+  margin-left: 0.5rem;
+  display: flex;
+  width: 100%;
+  border: 1px solid #deddda;
+  border-radius: 3rem;
+  padding: 0 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post__inputForm > form > input {
+  outline: none;
+  border: none;
+}
+
+.post__inputForm > form > button {
+  display: none;
+}
+
+.post__inputIcons > .mediaItem {
+  margin-left: 0.5rem;
+}
+
+/* Images Related */
+.post__userImg {
+  width: 48px;
+  height: 48px;
+}
+
+.post__img {
+  width: 100%;
+  height: auto;
+}
+
+.post__inputImg {
+  height: 40px;
+  width: 40px;
+  border-radius: 3rem;
+}
+
+/* Text Related */
+/* Post Upper Part */
+.post__userName {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.post__userFollowers {
+  font-size: 0.9rem;
+  font-weight: lighter;
+}
+
+.post__date {
+  font-size: 0.7rem;
+  font-weight: lighter;
+}
+/* Post Part */
+.post__description {
+  text-align: left;
+  padding: 1rem;
+}
+.post__container > .mediaItem:hover {
+  background: #fff;
+  cursor: context-menu;
+}
+
+/* Post Bottom Part */

@@ -1,0 +1,21 @@
+.mediaItem {
+  display: flex;
+  padding: 0.75rem 0.75rem;
+  font-size: 1rem;
+  transition: 0.3s;
+  align-items: center;
+}
+
+.mediaItem > p {
+  margin-left: 0.3rem;
+  color: rgb(110, 110, 110);
+}
+
+.mediaItem:hover {
+  cursor: pointer;
+  border-radius: 0.35rem;
+  background: #ebebeb;
+  cursor: pointer;
+}
+
+/* overflow-wrap: anywhere; */

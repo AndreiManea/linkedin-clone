@@ -6,11 +6,20 @@ import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import AddIcon from '@material-ui/icons/Add';
 import profilePic from '../../assets/Images/profile.jpg'
 function Sidebar() {
+
+    const createHash = (hash) => (
+        <div className="sidebar__hashtag">
+            <LabelImportantIcon/>     
+            <p>{hash}</p>
+         </div>
+    );
+
+
     return (
         <div className="sidebar">
             <div className="sidebar__top">
                 <img src="https://images.unsplash.com/photo-1506057278219-795838d4c2dd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fHBlYWNlfGVufDB8MHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt=""/>
-                <Avatar className="sidebar__profile" src={profilePic}/>
+                <Avatar className="sidebar__profile" src={profilePic} />
                 <h2 className="sidebar__name">Andrei Codes</h2>
                 <h4 className="sidebar__job">Front-End Developer</h4>
                 <hr/>
@@ -33,19 +42,10 @@ function Sidebar() {
                         <ExpandMoreIcon className="sidebar__dropdown"/>
                     </div>
                     <div className="sidebar__hashtags">
-                            <div className="sidebar__hashtag">
-                                <LabelImportantIcon/>     
-                                <p>webdevelopment</p>
-                            </div>
-                            <div className="sidebar__hashtag">
-                                <LabelImportantIcon/>     
-                                <p>webdesign</p>
-                            </div>
-                            <div className="sidebar__hashtag">
-                                <LabelImportantIcon/>     
-                                <p>html</p>
-                            </div>
-                        </div>
+                            {createHash('webdevelopment')}
+                            {createHash('webdesign')}
+                            {createHash('html')}
+                    </div>
                     <div className="sidebar__link">
                         <p>Groups</p>
                     </div>
@@ -58,18 +58,9 @@ function Sidebar() {
                         <ExpandMoreIcon className="sidebar__dropdown"/>
                     </div>
                     <div className="sidebar__hashtags">
-                            <div className="sidebar__hashtag">
-                                <LabelImportantIcon/>     
-                                <p>webdevelopment</p>
-                            </div>
-                            <div className="sidebar__hashtag">
-                                <LabelImportantIcon/>     
-                                <p>webdesign</p>
-                            </div>
-                            <div className="sidebar__hashtag">
-                                <LabelImportantIcon/>     
-                                <p>html</p>
-                            </div>
+                            {createHash('webdevelopment')}
+                            {createHash('webdesign')}
+                            {createHash('html')}
                         </div>
                 </div>
             </div>

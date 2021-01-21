@@ -59,8 +59,8 @@
 }
 
 .sidebar__profile {
-  width: 72px;
-  height: 72px;
+  width: 72px !important;
+  height: 72px !important;
 }
 
 .sidebar__stat,
@@ -115,6 +115,7 @@
 .sidebar__statNumber {
   margin-left: 2rem;
   color: #0a66c2;
+  font-weight: 500;
 }
 
 .sidebar__dropdown {
