@@ -8,7 +8,7 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import HeaderOption from '../HeaderOption/HeaderOption';
+import HeaderOption from './HeaderOption/HeaderOption';
 function Header() {
     return (
         <div className="header">

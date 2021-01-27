@@ -90,7 +90,8 @@
 
 .post__img {
   width: 100%;
-  height: auto;
+  max-height: 45vh;
+  object-fit: cover;
 }
 
 .post__inputImg {

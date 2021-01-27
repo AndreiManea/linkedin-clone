@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Feed.css"
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
@@ -8,25 +8,66 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import MediaItem from './MediaItem/MediaItem';
 import Post from './Post/Post';
 import profilePic from '../../assets/Images/profile.jpg'
+import { db } from '../../firebase/firebase';
+import firebase from 'firebase'
 function Feed() {
+    const [input, setInput] = useState("");
+    const [posts, setPosts] = useState([]);
+    const [img, setImg] = useState("");
+    
+    useEffect(() => {
+        db.collection("posts").orderBy('timestamp', 'desc').onSnapshot(snapshot => (
+            setPosts(snapshot.docs.map(doc => (
+                {
+                    id: doc.id,
+                    data: doc.data()
+                }
+            )))
+        ))
+        getImg();
+    }, [])
+
+
+
     let newDate = new Date();
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
     let currentDate = `${date}/${month<10?`0${month}`:`${month}`}/${year}`;
-    const buttonHandler = (e) => {
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    async function getImg() {
+       await fetch('https://source.unsplash.com/random').then(response => (setImg(response.url)));
+    }
+
+    const sendPost = (e) => {
         e.preventDefault();
+        getImg();
+        console.log(img);
+        db.collection('posts').add({
+            userName: 'Andrew Macer',
+            userImg: profilePic,
+            userFollowers: Math.floor(Math.random() * Math.floor(99999)),
+            date: currentDate,
+            time,
+            description: input,
+            postImg: img,
+            likes:  Math.floor(Math.random() * Math.floor(1500)),
+            profileImg: profilePic,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        setInput("");
     }
 
     return (
         <div className="feed">
             <div className="feed__inputContainer">
-
                 <div className="feed__createContainer">
                     <CreateOutlinedIcon/>
-                    <form onSubmit={buttonHandler}>
-                        <input type="text" placeholder="Start a post"/>
-                        <button type="submit">Send</button>
+                    <form>
+                        <input value={input} onChange={(e) => setInput(e.target.value)} type="text" placeholder="Start a post"/>
+                        <button onClick={sendPost} type="submit">Send</button>
                     </form>
                     
                 </div> 
@@ -37,42 +78,19 @@ function Feed() {
                 <MediaItem icon={<AssignmentIcon/>} text='Article' color='#f5987e'/>
                 </div>
             </div>
-            <Post userName= 'Andrei Codes' 
-                  userFollowers= '280'
-                  date = {currentDate}
-                  userImg = {profilePic} 
-                  description = 'First post, so excited to post this layout.
-                                Lorem ipsum dolor sit amet consectetur adicing
-                                elit. Molestias tempora maiores veniam vitae velit,
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus pariatur, doloribus obcaecati veritatis at fugiat! Molestias similique aliquid laudantium quisquam esse adipisci repellat labore facilis rerum, vitae facere itaque quod.
-                                architecto amet exercitationem esse officia.'                        
-                  postImg='https://images.unsplash.com/photo-1432265910742-819d660410b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-                  likes= '270'
-                  profileImg={profilePic}/>
-            <Post userName= 'Andrei Codes' 
-                  userFollowers= '280'
-                  date = {currentDate}
-                  userImg = {profilePic} 
-                  description = 'First post, so excited to post this layout.
-                                Lorem ipsum dolor sit amet consectetur adicing
-                                elit. Molestias tempora maiores veniam vitae velit,
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus pariatur, doloribus obcaecati veritatis at fugiat! Molestias similique aliquid laudantium quisquam esse adipisci repellat labore facilis rerum, vitae facere itaque quod.
-                                architecto amet exercitationem esse officia.'                        
-                  postImg='https://images.unsplash.com/photo-1432265910742-819d660410b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-                  likes= '270'
-                  profileImg={profilePic}/>
-            <Post userName= 'Andrei Codes' 
-                  userFollowers= '280'
-                  date = {currentDate}
-                  userImg = {profilePic} 
-                  description = 'First post, so excited to post this layout.
-                                Lorem ipsum dolor sit amet consectetur adicing
-                                elit. Molestias tempora maiores veniam vitae velit,
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus pariatur, doloribus obcaecati veritatis at fugiat! Molestias similique aliquid laudantium quisquam esse adipisci repellat labore facilis rerum, vitae facere itaque quod.
-                                architecto amet exercitationem esse officia.'                        
-                  postImg='https://images.unsplash.com/photo-1432265910742-819d660410b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-                  likes= '270'
-                  profileImg={profilePic}/>
+            {posts.map(({id, data: {userName, userFollowers, date, time, userImg, description, postImg, likes, profileImg}}) => (
+                <Post   
+                        key={id}
+                        userName={userName}
+                        userFollowers={userFollowers}
+                        date={date}
+                        time={time}
+                        userImg={userImg} 
+                        description={description} 
+                        postImg={postImg} 
+                        likes={likes} 
+                        profileImg={profileImg} />
+            ))}
         </div>
     )
 }

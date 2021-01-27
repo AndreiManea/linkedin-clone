@@ -9,7 +9,7 @@ import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined'
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import MediaItem from '../MediaItem/MediaItem';
 import './Post.css'
-function Post({userName, userFollowers, date, userImg, description, postImg, likes, profileImg}) {
+function Post({userName, userFollowers, date, time, userImg, description, postImg, likes, profileImg}) {
     return (
         <div className="post">
             <div className="post__top">
@@ -22,7 +22,7 @@ function Post({userName, userFollowers, date, userImg, description, postImg, lik
                         <p className="post__userFollowers">
                             {userFollowers} followers
                         </p>
-                        <p className="post__date">{date}</p>
+                        <p className="post__date">{date} at {time}</p>
                     </div>
                 </div>
                 <MoreHorizIcon/>
@@ -33,7 +33,7 @@ function Post({userName, userFollowers, date, userImg, description, postImg, lik
                     {description}
                     </p>
                     <img src={postImg} alt="" className="post__img"/>
-                    <MediaItem icon={<ThumbUpAltIcon/>} text="342" color="#116B9E"/>
+                    <MediaItem icon={<ThumbUpAltIcon/>} text={likes} color="#116B9E"/>
                 </div>
                 <div className="post__inputContainer">            
                     <div className="post__mediaItems">
