@@ -7,8 +7,8 @@ import EventIcon from '@material-ui/icons/Event';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MediaItem from './MediaItem/MediaItem';
 import Post from './Post/Post';
-import profilePic from '../../assets/Images/profile.jpg'
-import { db } from '../../firebase/firebase';
+import profilePic from '../../../assets/Images/profile.jpg'
+import { db } from '../../../firebase/firebase';
 import firebase from 'firebase'
 function Feed() {
     const [input, setInput] = useState("");

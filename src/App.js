@@ -1,26 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
-import Feed from './Components/Feed/Feed';
-import Header from './Components/Header/Header';
-import Sidebar from './Components/Sidebar/Sidebar';
-import Widgets from './Components/Widgets/Widgets';
+import AppBody from './Components/AppBody/AppBody';
+import Login from './Components/Login/Login';
 
 function App() {
+  
+  const [auth, setAuth] = useState(true);
+
   return (
-    <div className="app">
-    {/* Header */}
-      <Header />
-    {/* App Body */}
-    <div className="app__body">
-      {/* Sidebar */}
-      <Sidebar/>
-      {/* Feed */}
-      <Feed/>
-      {/* Widgets */}
-      <Widgets/>
-    </div>
-
-
+    <div className="app" style={{background: auth ? '#f3f2ef' : '#fff'}}>
+        <Router>
+          <Switch>
+            <Route path="/" component={auth ? AppBody : Login } exact/>
+            <Route path="/login" component={Login} />
+            <Route path="/home" component={AppBody} />
+          </Switch>
+        </Router>
     </div>
   );
 }

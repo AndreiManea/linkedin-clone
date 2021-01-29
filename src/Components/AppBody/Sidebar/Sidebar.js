@@ -4,7 +4,7 @@ import { Avatar } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import AddIcon from '@material-ui/icons/Add';
-import profilePic from '../../assets/Images/profile.jpg'
+import profilePic from '../../../assets/Images/profile.jpg'
 function Sidebar() {
 
     const createHash = (hash) => (
