@@ -6,7 +6,7 @@ import Login from './Components/Login/Login';
 
 function App() {
   
-  const [auth, setAuth] = useState(true);
+  const [auth, setAuth] = useState(false);
 
   return (
     <div className="app" style={{background: auth ? '#f3f2ef' : '#fff'}}>

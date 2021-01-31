@@ -3,13 +3,7 @@
   flex-direction: column;
   align-items: center;
   margin-right: 20px;
-  color: gray;
-  cursor: pointer;
   transition: 0.34s;
-}
-
-.headerOption:hover {
-  color: black;
 }
 
 .headerOption__icon {
@@ -18,7 +12,21 @@
   width: 25px !important;
 }
 
-.headerOption__title {
+.headerOption__link {
   font-size: 12px;
   font-weight: 400px;
+  text-decoration: none;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerOption__link:hover,
+.active {
+  color: black;
+}
+
+.headerOption__link:visited {
+  color: none;
 }

@@ -20,10 +20,10 @@ function Header() {
                 </div>
             </div>
             <div className="header__right">
-                <HeaderOption Icon={HomeIcon} title="Home"/>
-                <HeaderOption Icon={SupervisorAccountIcon} title="My Network"/>
-                <HeaderOption Icon={BusinessCenterIcon} title="Jobs"/>
-                <HeaderOption Icon={ChatIcon} title="Messaging"/>
+                <HeaderOption Icon={HomeIcon} title="Home" link="/home" />
+                <HeaderOption Icon={SupervisorAccountIcon} title="My Network" link="/network"/>
+                <HeaderOption Icon={BusinessCenterIcon} title="Jobs" link="/jobs"/>
+                <HeaderOption Icon={ChatIcon} title="Messaging" link="/messages"/>
                 <HeaderOption Icon={NotificationsIcon} title="Notifications"/>
                 <HeaderOption avatar={profilePic} title="Me"/>
             </div>

@@ -53,7 +53,9 @@
   font-size: 1rem;
 }
 
-.login__form > form > button {
+.login__button {
+  text-align: center;
+  text-decoration: none;
   background-color: #0a66c2;
   padding: 1rem;
   border-radius: 2rem;

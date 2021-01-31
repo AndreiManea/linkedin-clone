@@ -1,18 +1,25 @@
 import React from 'react'
 import './AppBody.css'
 import Header from './Header/Header'
-import Sidebar from './Sidebar/Sidebar'
-import Feed from './Feed/Feed'
-import Widgets from './Widgets/Widgets'
+
+import Network from './Network/Network'
+import Jobs from './Jobs/Jobs'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import Home from './Home/Home'
 function AppBody() {
     return (
         <div className="appBody"> 
-            <Header />
-            <div className="appBody__body">
-            <Sidebar /> 
-            <Feed/> 
-            <Widgets/> 
-            </div>   
+                <Router>
+                <Header />
+                    <div className="appBody__body">
+                        <Switch>
+                            <Route path="/home" component={Home}  />
+                            <Route path="/network" component={Network} />
+                            <Route path="/jobs" component={Jobs} />
+                        </Switch>
+                    </div>   
+                </Router>
+                
         </div>
     )
 }
