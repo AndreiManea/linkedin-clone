@@ -1,60 +1,69 @@
-.login {
+.register {
   background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
   height: 90vh;
-  justify-content: center;
   max-width: 416px;
 }
 
-.login__logo {
+.register__logo {
   max-width: 120px;
   height: auto;
   margin: 1.25rem 0;
-  align-self: flex-start;
 }
 
-.login__title {
-  font-weight: 500;
+.register__title {
+  font-weight: 300;
+  text-align: center;
+  font-size: 1.6rem;
 }
 
-.login__description {
+.register__description {
   margin-top: 0.35rem;
 }
 
-.login__form {
+.register__form {
   box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
   padding: 24px 32px 32px;
   border-radius: 8px;
-  margin: 0 auto;
+  margin: 20px auto;
   width: 352px;
 }
 
-.login__form > form {
+.register__form > form {
   display: flex;
   flex-direction: column;
 }
 
-.login__form > form > input {
+.register__form > form > input {
   margin-top: 1.75rem;
   padding: 1rem 0.5rem;
 }
 
-.login__form > form > a {
+.register__form > form > a {
   margin-top: 1rem;
 }
 
-.login__form > form > input:focus {
+.register__form > form > p {
+  font-size: 0.75rem;
+  line-height: 1.33333;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 16px 0 16px 0;
+  text-align: center;
+}
+
+.register__form > form > input:focus {
   outline-color: rgb(0, 116, 180);
 }
 
-.login__form > form > input::placeholder {
+.register__form > form > input::placeholder {
   font-size: 1rem;
 }
 
-.login__button {
+.register__button {
   text-align: center;
   text-decoration: none;
   background-color: #0a66c2;
@@ -69,23 +78,26 @@
   border: none;
 }
 
-.login__button:hover {
+.register__button:hover {
   background-color: #004182;
 }
 
-.login__forgot,
-.login__register > a {
+.register__forgot,
+.register__form > form > p > a,
+.register__register > a {
   color: #2166c2;
   font-weight: 500;
   text-decoration: none;
   transition: 0.2s;
 }
 
-.login__forgot:hover,
-.login__register > a:hover {
+.register__forgot:hover,
+.register__form > form > p > a:hover,
+.register__register > a:hover {
   text-decoration: underline;
 }
 
-.login__register {
+.register__register {
   margin-top: 2rem;
+  text-align: center;
 }

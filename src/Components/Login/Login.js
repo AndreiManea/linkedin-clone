@@ -12,11 +12,11 @@ function Login() {
                 <form action="">
                     <input placeholder="Email or Phone" type="text"/>
                     <input placeholder="Password" type="password"/>
-                    <a href="">Forgot password?</a>
+                    <a className="login__forgot" href="">Forgot password?</a>
                     <Link type="submit" to="/home" className="login__button">Sign in</Link>
                 </form>
             </div>
-            <p className="login__register">New to Linkedin?{" "}<a href="">Join now</a></p>
+            <p className="login__register">New to Linkedin?{" "}<Link to="/register">Join now</Link></p>
         </div>
     )
 }
