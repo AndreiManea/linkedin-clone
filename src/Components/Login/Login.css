@@ -42,7 +42,7 @@
   padding: 1rem 0.5rem;
 }
 
-.login__form > form > a {
+.login__form > form > a, .login__form > form > button {
   margin-top: 1rem;
 }
 
