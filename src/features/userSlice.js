@@ -3,20 +3,20 @@ import { createSlice } from '@reduxjs/toolkit';
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    auth: false,
+    user: null,
   },
   reducers: {
-    login: state => {
-            state.auth = true;
+    login: (state, action) => {
+      state.user = action.payload;
     },
     logout: state => {
-      state.auth = false;
+      state.user = null;
     },
   },
 });
 
-export const { login, logout} = userSlice.actions;
+export const { login, logout } = userSlice.actions;
 
-export const selectCount = state => state.user.auth;
+export const selectUser = state => state.user.user;
 
 export default userSlice.reducer;

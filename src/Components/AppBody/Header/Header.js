@@ -9,23 +9,25 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import HeaderOption from './HeaderOption/HeaderOption';
-function Header() {
+function Header({ logout }) {
+
     return (
         <div className="header">
             <div className="header__left">
-                <img src={logo} alt=""/>
+                <img src={logo} alt="" />
                 <div className="header__search">
-                    <SearchIcon/>
-                    <input type="text"/>
+                    <SearchIcon />
+                    <input type="text" />
                 </div>
             </div>
             <div className="header__right">
                 <HeaderOption Icon={HomeIcon} title="Home" link="/home" />
-                <HeaderOption Icon={SupervisorAccountIcon} title="My Network" link="/network"/>
-                <HeaderOption Icon={BusinessCenterIcon} title="Jobs" link="/jobs"/>
-                <HeaderOption Icon={ChatIcon} title="Messaging" link="/messages"/>
-                <HeaderOption Icon={NotificationsIcon} title="Notifications"/>
-                <HeaderOption avatar={profilePic} title="Me"/>
+                <HeaderOption Icon={SupervisorAccountIcon} title="My Network" link="/network" />
+                <HeaderOption Icon={BusinessCenterIcon} title="Jobs" link="/jobs" />
+                <HeaderOption Icon={ChatIcon} title="Messaging" link="/messages" />
+                <HeaderOption Icon={NotificationsIcon} title="Notifications" />
+                <HeaderOption avatar={profilePic} title="Me" />
+                <button onClick={logout}>Log out</button>
             </div>
         </div>
     )

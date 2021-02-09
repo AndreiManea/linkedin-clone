@@ -28,6 +28,7 @@
 }
 .sidebar__top,
 .sidebar__bottom {
+  border: 1px solid lightgray;
   background-color: #fff;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -38,8 +39,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid lightgray;
-  border-bottom: 0;
   margin-bottom: 1rem;
 }
 
