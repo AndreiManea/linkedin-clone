@@ -2,13 +2,10 @@ import React from 'react'
 import './Login.css'
 import logo from '../../assets/Images/login__logo.png'
 import { Link } from 'react-router-dom'
-import { useHistory } from 'react-router-dom';
 import { Formik, Field, Form } from "formik";
-import { auth } from '../../firebase/firebase';
 import { useAuth } from '../../firebase/AuthContext';
 function Login() {
-    const history = useHistory();
-    const { login } = useAuth();
+    const { signIn } = useAuth();
     return (
         <div className='login'>
 
@@ -19,11 +16,11 @@ function Login() {
                 <p className="login__description">Stay updated on your professional world</p>
                 <Formik
                     initialValues={{ email: "", pass: "" }}
-                    onSubmit={async (values) => await login(values.email, values.pass)}>
+                    onSubmit={async (values) => await signIn(values.email, values.pass)}>
                     <Form>
                         <Field name="email" type="email" placeholder="Email or Phone" />
                         <Field name="pass" type="password" placeholder="Password" />
-                        <a className="login__forgot" href="">Forgot password?</a>
+                        <a className="login__forgot" href="/register">Forgot password?</a>
                         <button type="submit" className="login__button">Sign in</button>
                     </Form>
                 </Formik>

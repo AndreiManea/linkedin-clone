@@ -7,14 +7,15 @@ import EventIcon from '@material-ui/icons/Event';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MediaItem from './MediaItem/MediaItem';
 import Post from './Post/Post';
-import profilePic from '../../../../assets/Images/profile.jpg'
 import { db } from '../../../../firebase/firebase';
 import firebase from 'firebase'
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../../features/userSlice';
 function Feed() {
     const [input, setInput] = useState("");
     const [posts, setPosts] = useState([]);
     const [img, setImg] = useState("");
-
+    const user = useSelector(selectUser);
     useEffect(() => {
         db.collection("posts").orderBy('timestamp', 'desc').onSnapshot(snapshot => (
             setPosts(snapshot.docs.map(doc => (
@@ -46,15 +47,15 @@ function Feed() {
         getImg();
         console.log(img);
         db.collection('posts').add({
-            userName: 'Andrew Macer',
-            userImg: profilePic,
+            userName: user.displayName,
+            userImg: user.photoUrl,
             userFollowers: Math.floor(Math.random() * Math.floor(99999)),
             date: currentDate,
             time,
             description: input,
             postImg: img,
             likes: Math.floor(Math.random() * Math.floor(1500)),
-            profileImg: profilePic,
+            profileImg: user.photoUrl,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
         setInput("");

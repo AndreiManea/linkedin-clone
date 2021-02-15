@@ -1,26 +1,17 @@
 import React from 'react'
 import './AppBody.css'
 import Header from './Header/Header'
-
 import Network from './Network/Network'
 import Jobs from './Jobs/Jobs'
-import { Route, BrowserRouter as Router, Switch, useHistory } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Home from './Home/Home'
-import { auth } from '../../firebase/firebase'
-import { useDispatch } from 'react-redux'
-import { logout } from '../../features/userSlice'
+import { useAuth } from '../../firebase/AuthContext'
 function AppBody() {
-    const history = useHistory();
-    const dispatch = useDispatch();
-    const logoutHandler = () => {
-        auth.signOut();
-        dispatch(logout());
-        history.push('/login');
-    }
+    const { signOut } = useAuth();
     return (
         <div className="appBody">
             <Router>
-                <Header logout={logoutHandler} />
+                <Header logout={signOut} />
                 <div className="appBody__body">
                     <Switch>
                         <Route path="/home" component={Home} />

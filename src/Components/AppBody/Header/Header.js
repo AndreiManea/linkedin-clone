@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../../../assets/Images/logo.png'
-import profilePic from '../../../assets/Images/profile.jpg'
 import './Header.css';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
@@ -9,8 +8,10 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import HeaderOption from './HeaderOption/HeaderOption';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../features/userSlice';
 function Header({ logout }) {
-
+    const user = useSelector(selectUser)
     return (
         <div className="header">
             <div className="header__left">
@@ -26,7 +27,7 @@ function Header({ logout }) {
                 <HeaderOption Icon={BusinessCenterIcon} title="Jobs" link="/jobs" />
                 <HeaderOption Icon={ChatIcon} title="Messaging" link="/messages" />
                 <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-                <HeaderOption avatar={profilePic} title="Me" />
+                <HeaderOption avatar={user.photoUrl} title="Me" />
                 <button onClick={logout}>Log out</button>
             </div>
         </div>

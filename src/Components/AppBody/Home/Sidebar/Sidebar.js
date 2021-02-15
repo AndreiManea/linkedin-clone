@@ -4,25 +4,26 @@ import { Avatar } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import AddIcon from '@material-ui/icons/Add';
-import profilePic from '../../../../assets/Images/profile.jpg'
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../../features/userSlice';
 function Sidebar() {
-
+    const user = useSelector(selectUser)
     const createHash = (hash) => (
         <div className="sidebar__hashtag">
-            <LabelImportantIcon/>     
+            <LabelImportantIcon />
             <p>{hash}</p>
-         </div>
+        </div>
     );
 
 
     return (
         <div className="sidebar">
             <div className="sidebar__top">
-                <img src="https://images.unsplash.com/photo-1506057278219-795838d4c2dd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fHBlYWNlfGVufDB8MHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt=""/>
-                <Avatar className="sidebar__profile" src={profilePic} />
-                <h2 className="sidebar__name">Andrei Codes</h2>
+                <img src="https://images.unsplash.com/photo-1506057278219-795838d4c2dd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fHBlYWNlfGVufDB8MHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+                <Avatar className="sidebar__profile" src={user.photoUrl} />
+                <h2 className="sidebar__name">{user.displayName}</h2>
                 <h4 className="sidebar__job">Front-End Developer</h4>
-                <hr/>
+                <hr />
                 <div className="sidebar__stats">
                     <div className="sidebar__stat">
                         <p>Who viewed your profile</p>
@@ -32,36 +33,36 @@ function Sidebar() {
                         <p>Connections</p>
                         <p className="sidebar__statNumber">240</p>
                     </div>
+                </div>
             </div>
-            </div>
-            
+
             <div className="sidebar__bottom">
                 <div className="sidebar__links">
                     <div className="sidebar__link sidebar__link--recent">
                         <p>Recent</p>
-                        <ExpandMoreIcon className="sidebar__dropdown"/>
+                        <ExpandMoreIcon className="sidebar__dropdown" />
                     </div>
                     <div className="sidebar__hashtags">
-                            {createHash('webdevelopment')}
-                            {createHash('webdesign')}
-                            {createHash('html')}
+                        {createHash('webdevelopment')}
+                        {createHash('webdesign')}
+                        {createHash('html')}
                     </div>
                     <div className="sidebar__link">
                         <p>Groups</p>
                     </div>
                     <div className="sidebar__link">
                         <p>Events</p>
-                        <AddIcon className="sidebar__plus"/>
+                        <AddIcon className="sidebar__plus" />
                     </div>
                     <div className="sidebar__link">
                         <p>Followed Hashtags</p>
-                        <ExpandMoreIcon className="sidebar__dropdown"/>
+                        <ExpandMoreIcon className="sidebar__dropdown" />
                     </div>
                     <div className="sidebar__hashtags">
-                            {createHash('webdevelopment')}
-                            {createHash('webdesign')}
-                            {createHash('html')}
-                        </div>
+                        {createHash('webdevelopment')}
+                        {createHash('webdesign')}
+                        {createHash('html')}
+                    </div>
                 </div>
             </div>
         </div>

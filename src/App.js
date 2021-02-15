@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import AppBody from './Components/AppBody/AppBody';
 import Login from './Components/Login/Login';

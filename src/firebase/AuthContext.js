@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { auth } from './firebase'
-import firebase from 'firebase'
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, selectUser } from '../features/userSlice';
+import { useHistory } from 'react-router-dom';
 
 
 const AuthContext = React.createContext()
@@ -14,6 +14,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
     const dispatch = useDispatch()
     const user = useSelector(selectUser)
+    const history = useHistory()
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(userAuth => {
@@ -32,10 +33,11 @@ export function AuthProvider({ children }) {
         })
 
         return unsubscribe
+        // eslint-disable-next-line
     }, []);
 
 
-    function signup(email, password, displayName, photoURL) {
+    function signUp(email, password, displayName, photoURL) {
         return auth.createUserWithEmailAndPassword(email, password).then(userAuth => {
             userAuth.user.updateProfile({
                 displayName: displayName,
@@ -50,17 +52,27 @@ export function AuthProvider({ children }) {
             }).catch(err => alert(err));
         }).catch(err => alert(err));
     }
-    function login(email, password) {
-        return auth.signInWithEmailAndPassword(email, password).then(() => {
+    function signIn(email, password) {
+        return auth.signInWithEmailAndPassword(email, password).then(userAuth => {
+            console.log(email);
+            console.log(userAuth.user);
+            dispatch(login({
+                email: userAuth.user.email,
+                uid: userAuth.user.uid,
+                displayName: userAuth.user.displayName,
+                photoURL: userAuth.user.photoURL,
+            }));
             history.push("/home");
-        }).catch(err => alert(err.message));
+        }).catch(err => console.log(err));
     }
 
     function resetPassword(email) {
         return auth.sendPasswordResetEmail(email)
     }
 
-    function logout() {
+    function signOut() {
+        dispatch(logout());
+        history.push("/login");
         return auth.signOut()
     }
 
@@ -77,10 +89,10 @@ export function AuthProvider({ children }) {
 
     const value = {
         user,
-        signup,
-        // login,
+        signUp,
+        signIn,
         resetPassword,
-        logout,
+        signOut,
         updateEmail,
         updatePassword
     }
