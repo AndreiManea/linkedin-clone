@@ -45,11 +45,11 @@ function Feed() {
     const sendPost = (e) => {
         e.preventDefault();
         getImg();
-        console.log(img);
         db.collection('posts').add({
             userName: user.displayName,
             userImg: user.photoUrl,
             userFollowers: Math.floor(Math.random() * Math.floor(99999)),
+            userId: user.uid,
             date: currentDate,
             time,
             description: input,
@@ -79,11 +79,12 @@ function Feed() {
                     <MediaItem icon={<AssignmentIcon />} text='Article' color='#f5987e' />
                 </div>
             </div>
-            {posts.map(({ id, data: { userName, userFollowers, date, time, userImg, description, postImg, likes, profileImg } }) => (
+            {posts.map(({ id, data: { userName, userFollowers, userId, date, time, userImg, description, postImg, likes, profileImg } }) => (
                 <Post
                     key={id}
                     userName={userName}
                     userFollowers={userFollowers}
+                    userId={userId}
                     date={date}
                     time={time}
                     userImg={userImg}

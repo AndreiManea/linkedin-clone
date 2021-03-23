@@ -15,14 +15,13 @@ function Sidebar() {
         </div>
     );
 
-
     return (
         <div className="sidebar">
             <div className="sidebar__top">
                 <img src="https://images.unsplash.com/photo-1506057278219-795838d4c2dd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fHBlYWNlfGVufDB8MHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
-                <Avatar className="sidebar__profile" src={user.photoUrl} />
-                <h2 className="sidebar__name">{user.displayName}</h2>
-                <h4 className="sidebar__job">Front-End Developer</h4>
+                <Avatar className="sidebar__profile" src={user?.photoUrl} />
+                <h2 className="sidebar__name">{user?.displayName}</h2>
+                <h4 className="sidebar__job">{user?.job}</h4>
                 <hr />
                 <div className="sidebar__stats">
                     <div className="sidebar__stat">
