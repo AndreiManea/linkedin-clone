@@ -15,4 +15,4 @@
    <li><strong>Posting a post</strong></li>
    <li><strong>Seeing all posts from users</strong></li>
  </ul?
-<p> <strong> Live link: </strong> https://linkedin-clone-4fb93.web.app/
+<p><strong> Live link: </strong> https://linkedin-clone-4fb93.web.app/
